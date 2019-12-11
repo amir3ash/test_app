@@ -2,14 +2,22 @@ package com.co.amir.myapplication.ui.mainactivity2;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.co.amir.myapplication.R;
+import com.co.amir.myapplication.adapter.Adapter;
+import com.co.amir.myapplication.databinding.MainActivity2FragmentDashboardBinding;
+import com.co.amir.myapplication.model.Person;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,6 +71,7 @@ public class Fragment_dashboard extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
         mViewModel = ViewModelProviders.of(getActivity()).get(MainActivity2ViewModel.class);
 
     }
@@ -70,8 +79,47 @@ public class Fragment_dashboard extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        MainActivity2FragmentDashboardBinding binding= DataBindingUtil.inflate(
+                inflater,R.layout.main_activity2_fragment_dashboard,container,false);
+
+        RecyclerView recyclerView=binding.recycler;
+        LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+
+        ArrayList<Person> people=new ArrayList<>();
+        people.add(new Person().setPerson("amir","ASH1"));
+        people.add(new Person().setPerson("mohsen","MSH"));
+        people.add(new Person().setPerson("zahra","ZSH"));
+        people.add(new Person().setPerson("amir","ASH2"));
+        people.add(new Person().setPerson("mohsen","MSH"));
+        people.add(new Person().setPerson("zahra","ZSH"));
+        people.add(new Person().setPerson("amir","ASH3"));
+        people.add(new Person().setPerson("mohsen","MSH"));
+        people.add(new Person().setPerson("zahra","ZSH"));
+        people.add(new Person().setPerson("amir","ASH4"));
+        people.add(new Person().setPerson("mohsen","MSH"));
+        people.add(new Person().setPerson("zahra","ZSH"));
+        people.add(new Person().setPerson("amir","ASH5"));
+        people.add(new Person().setPerson("mohsen","MSH"));
+        people.add(new Person().setPerson("zahra","ZSH"));
+        people.add(new Person().setPerson("amir","ASH6"));
+        people.add(new Person().setPerson("mohsen","MSH"));
+        people.add(new Person().setPerson("zahra","ZSH"));
+        people.add(new Person().setPerson("amir","ASH7"));
+        people.add(new Person().setPerson("mohsen","MSH"));
+        people.add(new Person().setPerson("zahra","ZSH"));
+        people.add(new Person().setPerson("amir","ASH8"));
+        people.add(new Person().setPerson("mohsen","MSH"));
+        people.add(new Person().setPerson("zahra","ZSH"));
+
+
+        Adapter adapter=new Adapter(people);
+        recyclerView.setAdapter(adapter);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.main_activity2_fragment_dashboard, container, false);
+        return binding.getRoot();
     }
 
     // TODO: Rename method, update argument and hook method into UI event

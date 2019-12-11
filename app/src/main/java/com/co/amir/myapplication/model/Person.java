@@ -4,10 +4,14 @@ import com.google.gson.annotations.SerializedName;
 
 public class Person {
     @SerializedName("name")
-    String name;
+    private String name;
     @SerializedName("age")
-    String age;
+    private String age;
 
+    public Person setPerson(String a,String b){
+        name=a;age=b;
+        return this;
+    }
     public String getAge() {
         return age;
     }
