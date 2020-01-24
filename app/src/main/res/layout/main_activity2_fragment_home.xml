@@ -10,7 +10,7 @@
             name="viewmodel"
             type="com.co.amir.myapplication.ui.mainactivity2.MainActivity2ViewModel" />
     </data>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/mainactivity2"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -36,5 +36,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

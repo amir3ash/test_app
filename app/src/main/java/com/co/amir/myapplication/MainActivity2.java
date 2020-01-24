@@ -1,18 +1,19 @@
 package com.co.amir.myapplication;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.co.amir.myapplication.ui.mainactivity2.Fragment_dashboard;
 import com.co.amir.myapplication.ui.mainactivity2.MainActivity2FragmentHome;
 import com.co.amir.myapplication.ui.mainactivity2.MainActivity2ViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity2 extends AppCompatActivity implements Fragment_dashboard.OnFragmentInteractionListener {
     Fragment frag_home= MainActivity2FragmentHome.newInstance();

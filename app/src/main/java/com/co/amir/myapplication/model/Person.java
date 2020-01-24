@@ -1,12 +1,23 @@
 package com.co.amir.myapplication.model;
 
-import com.google.gson.annotations.SerializedName;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+@Entity
 public class Person {
+
+    @PrimaryKey(autoGenerate = true)
+    public int uid;
+
+    @ColumnInfo(name = "name")
     @SerializedName("name")
-    private String name;
+    public String name;
+
     @SerializedName("age")
-    private String age;
+    public String age;
+
 
     public Person setPerson(String a,String b){
         name=a;age=b;

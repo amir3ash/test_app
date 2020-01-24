@@ -1,12 +1,12 @@
 package com.co.amir.myapplication.adapter;
 
-import android.databinding.DataBindingUtil;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.android.databinding.library.baseAdapters.BR;
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.co.amir.myapplication.R;
 import com.co.amir.myapplication.databinding.RecyclerItemBinding;
 import com.co.amir.myapplication.model.Person;
@@ -54,7 +54,7 @@ public Adapter (ArrayList<Person> p){
         }
 
         public void bind(Person person){
-            binding.setVariable(BR.model,person);
+            binding.setModel(person);
             binding.executePendingBindings();
         }
     }

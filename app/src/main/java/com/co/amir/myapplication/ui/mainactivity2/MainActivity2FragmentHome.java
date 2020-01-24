@@ -1,14 +1,16 @@
 package com.co.amir.myapplication.ui.mainactivity2;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.co.amir.myapplication.R;
 import com.co.amir.myapplication.databinding.MainActivity2FragmentHomeBinding;
@@ -30,7 +32,25 @@ public class MainActivity2FragmentHome extends Fragment {
                 inflater,R.layout.main_activity2_fragment_home,
                 container,false);
 
-         View view=binding.getRoot();
+//       AppDatabase db= AppDatabase.getDatabase(getContext());
+//        PersonDao personDao=db.personDao();
+        Person person1=new Person().setPerson("hello","56");
+//        personDao.insertAll(person1);
+        Repository repo =new Repository(getContext());
+        repo.insert(person1);
+        if(repo.getAllPersons()==null)
+           Log.i("jjjjj222 : ","name is Null !    error ");
+        else {
+            Log.i("this22222 : ","this is not empty");
+//            Log.i("thdidfsdf2222 : ",repo.getAllPersons().getValue().name);
+//            for (Person s:personDao.getAll()
+//                 ) {Log.i("dgDgdgg : ",s.name+"  "+s.age+String.valueOf(s.uid));
+//
+//            }
+        }
+
+
+        View view=binding.getRoot();
         Person p=new Person();p.setName("amir");
         binding.setModel(p);
         mViewModel = ViewModelProviders.of(getActivity()).get(MainActivity2ViewModel.class);
