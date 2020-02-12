@@ -1,0 +1,74 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.co.amir.myapplication.viewmodels.MainActivityViewModel" />
+    </data>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingStart="0dp"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        android:text="Login"
+        android:textColor="#da2121"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Username"
+        android:text="@={viewmodel.username}"
+        android:layout_marginTop="120dp"
+        android:padding="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/round_edittext"
+        android:inputType="textEmailAddress"
+        android:maxLines="1" />
+
+
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Password"
+        android:text="@={viewmodel.password}"
+        android:padding="15dp"
+        android:background="@drawable/round_edittext"
+        android:imeActionLabel="Sign in"
+        android:layout_marginBottom="20dp"
+        android:imeOptions="actionUnspecified"
+        android:inputType="textPassword"
+        android:maxLines="1" />
+
+
+    <Button
+        android:id="@+id/email_sign_in_button"
+        style="?android:textAppearanceSmall"
+        android:layout_width="180dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/round_button"
+        android:text="Sign in or regester"
+        android:textColor="#fafafa"
+        android:onClick="@{()->viewmodel.btnClick()}"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
+</layout>

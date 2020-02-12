@@ -1,4 +1,4 @@
-package com.co.amir.myapplication.ui.mainactivity2;
+package com.co.amir.myapplication.viewmodels;
 
 import android.app.Application;
 import android.util.Log;
@@ -9,7 +9,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.co.amir.myapplication.model.Person;
+import com.co.amir.myapplication.model.PersonDbModel;
+import com.co.amir.myapplication.ui.mainactivity2.Repository;
 
 import java.util.List;
 
@@ -17,21 +18,21 @@ import java.util.List;
 public class MainActivity2ViewModel extends AndroidViewModel {
     // TODO: Implement the ViewModel
     public final ObservableField<String> text=new ObservableField<>();
-    public final ObservableArrayList<Person> people =new ObservableArrayList<>();
+    public final ObservableArrayList<PersonDbModel> people =new ObservableArrayList<>();
     private Repository mRepository;
-    private MutableLiveData<List<Person>> mAllPerson=new MutableLiveData<>();
+    private MutableLiveData<List<PersonDbModel>> mAllPerson=new MutableLiveData<>();
 
-    MainActivity2ViewModel(Application application){
+    public MainActivity2ViewModel(Application application){
         super(application);
         mRepository=new Repository(application);
         mAllPerson.postValue(mRepository.getAllPersons());
 
     }
 
-    public LiveData<Person> getmAllPerson() {
+    public LiveData<PersonDbModel> getmAllPerson() {
         return null;
     }
-    public void insert(Person person){
+    public void insert(PersonDbModel person){
         mRepository.insert(person);
     }
 
@@ -39,7 +40,7 @@ public class MainActivity2ViewModel extends AndroidViewModel {
         return text;
     }
 
-    public ObservableArrayList<Person> getPeople() {
+    public ObservableArrayList<PersonDbModel> getPeople() {
         return people;
     }
 
@@ -47,7 +48,7 @@ public class MainActivity2ViewModel extends AndroidViewModel {
         Log.d("btn_click","the button was pressed");
         text.set("hello");
 
-//                        for (Person p:getmAllPerson().) {
+//                        for (PersonDbModel p:getmAllPerson().) {
 //                            Log.i("jjjjjjjaj: ",p.name);
 //
 //                        }

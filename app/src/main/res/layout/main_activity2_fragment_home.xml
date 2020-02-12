@@ -5,10 +5,10 @@
     <data>
         <variable
             name="model"
-            type="com.co.amir.myapplication.model.Person"/>
+            type="com.co.amir.myapplication.model.PersonDbModel"/>
         <variable
             name="viewmodel"
-            type="com.co.amir.myapplication.ui.mainactivity2.MainActivity2ViewModel" />
+            type="com.co.amir.myapplication.viewmodels.MainActivity2ViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/mainactivity2"

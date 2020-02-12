@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.co.amir.myapplication.model.Person;
+import com.co.amir.myapplication.model.PersonDbModel;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -17,16 +17,16 @@ import io.reactivex.schedulers.Schedulers;
 
 public class Repository {
     private   PersonDao personDao;
-    private List<Person> allPersons;
+    private List<PersonDbModel> allPersons;
 
-    Repository(Context application){
+    public Repository(Context application){
         AppDatabase db=AppDatabase.getDatabase(application);
         personDao=db.personDao();
-       Disposable disposable= personDao.getAll().subscribeOn(Schedulers.newThread()).subscribe(new Consumer<List<Person>>() {
+       Disposable disposable= personDao.getAll().subscribeOn(Schedulers.newThread()).subscribe(new Consumer<List<PersonDbModel>>() {
             @Override
-            public void accept(List<Person> people) throws Exception {
+            public void accept(List<PersonDbModel> people) throws Exception {
                 allPersons=people;
-                for (Person p:people
+                for (PersonDbModel p:people
                      ) {
                     Log.i("tagWithA", "accept: "+p.uid);
                     Thread.sleep(500);
@@ -37,32 +37,32 @@ public class Repository {
 //       disposable.dispose();
     }
 
-    public List<Person> getAllPersons() {
+    public List<PersonDbModel> getAllPersons() {
         // allPersons=personDao.getAll();
          return  allPersons;
     }
 
-    public void insert(Person person){
+    public void insert(PersonDbModel person){
         Observable.just(person).subscribeOn(Schedulers.io()).delay(500, TimeUnit.MILLISECONDS)
-                .subscribe(new Consumer<Person>() {
+                .subscribe(new Consumer<PersonDbModel>() {
                     @Override
-                    public void accept(Person person) throws Exception {
+                    public void accept(PersonDbModel person) throws Exception {
                         personDao.insertAll(person);
                     }
                 });
 //        new InsertToDB(personDao).doInBackground(person);
 //        Observable.just(allPersons)
 //                .subscribeOn(Schedulers.io())
-//                .map(new Function<LiveData<List<Person>>,Void>() {
+//                .map(new Function<LiveData<List<PersonDbModel>>,Void>() {
 //                    @Override
-//                    public Void apply(LiveData<List<Person>> listLiveData) throws Exception {
+//                    public Void apply(LiveData<List<PersonDbModel>> listLiveData) throws Exception {
 //                        personDao.insertAll(listLiveData.getValue().get(0));
 //                        return null;
 //                    }
 //                });
     }
 
-    private class InsertToDB extends AsyncTask<Person,Void,Void>{
+    private class InsertToDB extends AsyncTask<PersonDbModel,Void,Void>{
         private PersonDao personDao;
 
         InsertToDB(PersonDao personDao){
@@ -70,7 +70,7 @@ public class Repository {
         }
 
         @Override
-        protected Void doInBackground(Person... people) {
+        protected Void doInBackground(PersonDbModel... people) {
             personDao.insertAll(people[0]);
             return null;
         }

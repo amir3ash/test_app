@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.co.amir.myapplication.R;
 import com.co.amir.myapplication.databinding.RecyclerItemBinding;
 import com.co.amir.myapplication.model.Person;
+import com.co.amir.myapplication.model.PersonDbModel;
 
 import java.util.ArrayList;
 

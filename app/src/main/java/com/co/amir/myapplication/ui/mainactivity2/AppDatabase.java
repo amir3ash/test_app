@@ -6,9 +6,9 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.co.amir.myapplication.model.Person;
+import com.co.amir.myapplication.model.PersonDbModel;
 
-@Database(entities = {Person.class},version = 1)
+@Database(entities = {PersonDbModel.class},version = 1)
 public abstract class AppDatabase extends RoomDatabase{
     private static AppDatabase INSTSNCE;
 

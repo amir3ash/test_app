@@ -1,7 +1,10 @@
 package com.co.amir.myapplication;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -12,7 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.co.amir.myapplication.ui.mainactivity2.Fragment_dashboard;
 import com.co.amir.myapplication.ui.mainactivity2.MainActivity2FragmentHome;
-import com.co.amir.myapplication.ui.mainactivity2.MainActivity2ViewModel;
+import com.co.amir.myapplication.viewmodels.MainActivity2ViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity2 extends AppCompatActivity implements Fragment_dashboard.OnFragmentInteractionListener {
@@ -47,7 +50,18 @@ public class MainActivity2 extends AppCompatActivity implements Fragment_dashboa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        String token =pref.getString("token",null);
+        if(token==null){
+            Log.e("err","token is null.");
+            startActivity(new Intent(this,MainActivity.class));
+            finish();
+        }
         setContentView(R.layout.main_activity2_activity);
+
+
+        //Log.e("token2",token);
 
         BottomNavigationView navView = findViewById(R.id.nav_view_m2);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

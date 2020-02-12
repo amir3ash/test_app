@@ -14,7 +14,8 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.co.amir.myapplication.R;
 import com.co.amir.myapplication.databinding.MainActivity2FragmentHomeBinding;
-import com.co.amir.myapplication.model.Person;
+import com.co.amir.myapplication.model.PersonDbModel;
+import com.co.amir.myapplication.viewmodels.MainActivity2ViewModel;
 
 public class MainActivity2FragmentHome extends Fragment {
 
@@ -34,7 +35,7 @@ public class MainActivity2FragmentHome extends Fragment {
 
 //       AppDatabase db= AppDatabase.getDatabase(getContext());
 //        PersonDao personDao=db.personDao();
-        Person person1=new Person().setPerson("hello","56");
+        PersonDbModel person1=new PersonDbModel().setPerson("hello","56");
 //        personDao.insertAll(person1);
         Repository repo =new Repository(getContext());
         repo.insert(person1);
@@ -43,7 +44,7 @@ public class MainActivity2FragmentHome extends Fragment {
         else {
             Log.i("this22222 : ","this is not empty");
 //            Log.i("thdidfsdf2222 : ",repo.getAllPersons().getValue().name);
-//            for (Person s:personDao.getAll()
+//            for (PersonDbModel s:personDao.getAll()
 //                 ) {Log.i("dgDgdgg : ",s.name+"  "+s.age+String.valueOf(s.uid));
 //
 //            }
@@ -51,7 +52,7 @@ public class MainActivity2FragmentHome extends Fragment {
 
 
         View view=binding.getRoot();
-        Person p=new Person();p.setName("amir");
+        PersonDbModel p=new PersonDbModel();p.setName("amir");
         binding.setModel(p);
         mViewModel = ViewModelProviders.of(getActivity()).get(MainActivity2ViewModel.class);
         mViewModel.text.set("First");

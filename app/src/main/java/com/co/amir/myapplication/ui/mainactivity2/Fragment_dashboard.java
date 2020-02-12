@@ -17,6 +17,7 @@ import com.co.amir.myapplication.R;
 import com.co.amir.myapplication.adapter.Adapter;
 import com.co.amir.myapplication.databinding.MainActivity2FragmentDashboardBinding;
 import com.co.amir.myapplication.model.Person;
+import com.co.amir.myapplication.viewmodels.MainActivity2ViewModel;
 
 import java.util.ArrayList;
 
